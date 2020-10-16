@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.POIMapper">
+
+    <resultMap id="POIResultMap" type="com.authine.cloudpivot.mybatis.entity.POIEntity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="workflowInstanceId" jdbcType="VARCHAR" property="workflowInstanceId" />
+        <result column="sequenceNo" jdbcType="VARCHAR" property="sequenceNo" />
+        <result column="sequenceStatus" jdbcType="VARCHAR" property="sequenceStatus" />
+        <result column="clj" jdbcType="VARCHAR" property="clj" />
+        <result column="dz" jdbcType="VARCHAR" property="dz" />
+        <result column="yb" jdbcType="VARCHAR" property="yb" />
+        <result column="fddbr" jdbcType="VARCHAR" property="fddbr" />
+        <result column="zpfuxm" jdbcType="VARCHAR" property="zpfuxm" />
+        <result column="zprjfwnr" jdbcType="VARCHAR" property="zprjfwnr" />
+        <result column="zpyhs" jdbcType="VARCHAR" property="zpyhs" />
+        <result column="zpfwqx" jdbcType="VARCHAR" property="zpfwqx" />
+        <result column="zphtjg" jdbcType="VARCHAR" property="zphtjg" />
+        <result column="zpbz" jdbcType="VARCHAR" property="zpbz" />
+        <result column="zzxmmc" jdbcType="VARCHAR" property="zzxmmc" />
+        <result column="zzrjfwnr" jdbcType="VARCHAR" property="zzrjfwnr" />
+        <result column="zzsl" jdbcType="VARCHAR" property="zzsl" />
+        <result column="zzhtjg" jdbcType="VARCHAR" property="zzhtjg" />
+        <result column="zzbz" jdbcType="VARCHAR" property="zzbz" />
+        <result column="xmdd" jdbcType="VARCHAR" property="xmdd" />
+        <result column="qx" jdbcType="VARCHAR" property="qx" />
+        <result column="dwmc" jdbcType="VARCHAR" property="dwmc" />
+        <result column="sh" jdbcType="VARCHAR" property="sh" />
+        <result column="zcd" jdbcType="VARCHAR" property="zcd" />
+        <result column="khh" jdbcType="VARCHAR" property="khh" />
+        <result column="yhzh" jdbcType="VARCHAR" property="yhzh" />
+        <result column="qtyq" jdbcType="VARCHAR" property="qtyq" />
+    </resultMap>
+
+    <select id="getPOI" resultMap="POIResultMap" resultType="com.authine.cloudpivot.mybatis.entity.POIEntity" parameterType="java.lang.String">
+        select
+        id,
+        workflowInstanceId,
+        sequenceNo,
+        sequenceStatus,
+        clj,
+        dz,
+        yb,
+        fddbr,
+        zpfuxm,
+        zprjfwnr,
+        zpyhs,
+        zpfwqx,
+        zphtjg,
+        zpbz,
+        zzxmmc,
+        zzrjfwnr,
+        zzsl,
+        zzhtjg,
+        zzbz,
+        xmdd,
+        qx,
+        dwmc,
+        sh,
+        zcd,
+        khh,
+        yhzh,
+        qtyq
+        from irvtt_POI where workflowInstanceId = #{workflowInstanceId}
+    </select>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.DEMOMapper">
+
+    <resultMap id="DEMO1ResultMap" type="com.authine.cloudpivot.mybatis.entity.DEMO1Entity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="parentId" jdbcType="VARCHAR" property="parentId" />
+        <result column="MC" jdbcType="VARCHAR" property="MC" />
+        <result column="SL" jdbcType="VARCHAR" property="SL" />
+        <result column="BZ" jdbcType="VARCHAR" property="BZ" />
+        <result column="sortKey" jdbcType="INTEGER" property="sortKey" />
+    </resultMap>
+
+    <select id="getDEMO1" resultMap="DEMO1ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO1Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_GHFWQD where parentId = #{parentId}
+    </select>
+
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.SearchMeetingRoomMapper">
+
+    <!-- 查询该用户名所发起或者使用人是该用户 的会议室申请          select * from `iaxwi_suoyouhuiyishi02` where (name=#{creater} or SYR=#{creater}) and SFQXSQ=0 and BFLCZT != 'CANCELED' and HYJSRQ > now();
+  -->
+    <select id="getOwnApply" resultType="com.authine.cloudpivot.mybatis.entity.PageData" parameterType="java.lang.String">
+        select * from i7jgu_HYSYDLC
+        where (creater= #{fqr} or syr like #{syr} ) and sfqx='否' and sequenceStatus != 'CANCELED' and unix_timestamp(ydjsrq) > unix_timestamp(NOW());
+    </select>
+
+    <!--查询会议室-->
+    <select id="gerRoomName" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select * from i7jgu_HYSGL where hysmc = #{hysmc}
+    </select>
+
+    <!-- 根据用户id获取用户名 -->
+    <select id="gerUserName" resultType="java.lang.String" parameterType="java.lang.String">
+        select name from h_org_user where id = #{id}
+    </select>
+
+    <!--会议室签到,将SFQD=是为签到-->
+    <update id="meetingSign">
+        update i7jgu_HYSYDLC set sfqd ='是' where workflowInstanceId= #{workflowInstanceId};
+    </update>
+
+    <!--取消所选会议-->
+    <update id="cancell">
+        update i7jgu_HYSYDLC set sfqx = '是' where workflowInstanceId= #{workflowInstanceId};
+    </update>
+
+    <!-- 根据流程号获取会议室预定流程信息 -->
+    <select id="getHYSLCBySequenceNo" resultType="com.authine.cloudpivot.mybatis.entity.PageData" parameterType="java.lang.String">
+        select * from i7jgu_HYSYDLC where workflowInstanceId= #{workflowInstanceId}
+    </select>
+
+    <!--查询当前时间之后的所有会议         SELECT HYKSRQ FROM `iaxwi_suoyouhuiyishi02` where HYKSRQ > #{dqhyjssj} and XZHYS= #{hysId} and SFQXSQ=0 and BFDJH != #{dqSequenceNo}
+-->
+    <select id="getMeetings" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        SELECT * FROM i7jgu_HYSYDLC where unix_timestamp(ydksrq) > unix_timestamp(#{dqhyjssj}) and hysmc= #{hysmc} and sfqx='否' and workflowInstanceId != #{workflowInstanceId}
+    </select>
+
+    <!--会议延长,更新会议结束时间-->
+    <update id="updateMeeting">
+        UPDATE i7jgu_HYSYDLC set ydjsrq= DATE_ADD(ydjsrq,INTERVAL #{min} minute) where workflowInstanceId= #{workflowInstanceId} and sfqx='否';
+    </update>
+
+    <!--提前结束会议-->
+    <update id="overEarly">
+        update i7jgu_HYSYDLC set ydjsrq=now(),sftqjs='是' where workflowInstanceId= #{workflowInstanceId} and sfqx='否';
+    </update>
+
+    <!--查询该单据号下所有的与会人-->
+    <select id="getConferee" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select gschry from i7jgu_HYSYDLC where workflowInstanceId= #{workflowInstanceId};
+    </select>
+
+    <!-- 查询这个时间段有无已发起的会议室申请   -->
+    <select id="searchMeetingRoom" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select * from i7jgu_HYSYDLC
+where
+(
+( unix_timestamp(#{ksrq}) BETWEEN unix_timestamp(ydksrq) and unix_timestamp(ydjsrq) )
+or ( unix_timestamp(#{jsrq}) BETWEEN unix_timestamp(ydksrq) and unix_timestamp(ydjsrq) )
+or ( unix_timestamp(ydksrq) BETWEEN unix_timestamp(#{ksrq}) and unix_timestamp(#{jsrq}) )
+or ( unix_timestamp(ydjsrq) BETWEEN unix_timestamp(#{ksrq}) and unix_timestamp(#{jsrq}) )
+)
+and hysmc= #{roomName}
+and sfqx='否'
+and sequenceStatus != 'CANCELED'
+    </select>
+
+
+    <!-- 查询所有会议室的预定情况 -->
+    <select id="getAllMeetingApply" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        SELECT * FROM i7jgu_HYSYDLC WHERE unix_timestamp(ydksrq) BETWEEN unix_timestamp(#{dateKssj}) AND unix_timestamp(#{dateJssj}) and sequenceStatus != 'CANCELED' and sfqx='否'
+    </select>
+
+    <!--根据会议室名称获取该会议室ID-->
+    <select id="getHYSXX" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select a.*,b.* from i7jgu_HYSGL as a INNER JOIN h_biz_attachment as b on a.id = b.bizObjectId where a.hysmc = #{roomName1}
+    </select>
+
+    <select id="getAllHYS" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select a.*,b.* from i7jgu_HYSGL as a INNER JOIN h_biz_attachment as b on a.id = b.bizObjectId
+    </select>
+
+    <!--根据参会人员id查询userId-->
+    <select id="getUserID" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select userId from h_org_user where id= #{chryId}
+    </select>
+
+</mapper>

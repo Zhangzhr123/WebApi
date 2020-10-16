@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.DEMOMapper">
+
+    <resultMap id="DEMO2ResultMap" type="com.authine.cloudpivot.mybatis.entity.DEMO2Entity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="parentId" jdbcType="VARCHAR" property="parentId" />
+        <result column="MC" jdbcType="VARCHAR" property="MC" />
+        <result column="YQ" jdbcType="VARCHAR" property="YQ" />
+        <result column="BZ" jdbcType="VARCHAR" property="BZ" />
+        <result column="sortKey" jdbcType="INTEGER" property="sortKey" />
+    </resultMap>
+
+    <select id="getDEMO2_1" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_BCPBJJDDSC where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_2" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_BCPBJJDLB where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_3" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_BCPBJJDNCC where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_4" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_BCPBJJDTC where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_5" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_BCPBJJDTM where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_6" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_BCPBJJDTQ where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_7" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_DLJDDSC where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_8" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_DLJDGDT where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_9" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_DLJDLB where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_10" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_DLJDNCCHTC where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_11" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_DLJDTM where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO2_12" resultMap="DEMO2ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO2Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_KCJD where parentId = #{parentId}
+    </select>
+
+</mapper>

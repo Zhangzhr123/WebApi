@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.RLMapper">
+
+    <resultMap id="BaseResultMap" type="com.authine.cloudpivot.mybatis.entity.RLEntity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="startdate1" jdbcType="TIMESTAMP" property="startdate1" />
+        <result column="enddate1" jdbcType="TIMESTAMP" property="enddate1" />
+        <result column="freedate1" jdbcType="DECIMAL" property="freedate1" />
+        <result column="workdate1" jdbcType="DECIMAL" property="workdate1" />
+    </resultMap>
+
+    <select id="getDate" resultMap="BaseResultMap" resultType="com.authine.cloudpivot.mybatis.entity.RLEntity" parameterType="java.lang.String">
+        select
+        id,
+        startdate1,
+        enddate1,
+        freedate1,
+        workdate1
+        from i0q17_CSRL where DATE(#{date}) between DATE(startdate1) and DATE(enddate1)
+    </select>
+
+</mapper>

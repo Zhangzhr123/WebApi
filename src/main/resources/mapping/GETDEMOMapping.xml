@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.DEMOMapper">
+
+    <resultMap id="DEMOResultMap" type="com.authine.cloudpivot.mybatis.entity.DEMOEntity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="workflowInstanceId" jdbcType="VARCHAR" property="workflowInstanceId" />
+        <result column="sequenceNo" jdbcType="VARCHAR" property="sequenceNo" />
+        <result column="sequenceStatus" jdbcType="VARCHAR" property="sequenceStatus" />
+        <result column="BT" jdbcType="VARCHAR" property="BT" />
+        <result column="RQ" jdbcType="VARCHAR" property="RQ" />
+        <result column="VERSION" jdbcType="VARCHAR" property="VERSION" />
+        <result column="XGSM" jdbcType="VARCHAR" property="XGSM" />
+        <result column="BZ" jdbcType="VARCHAR" property="BZ" />
+        <result column="PZ" jdbcType="VARCHAR" property="PZ" />
+        <result column="MF" jdbcType="VARCHAR" property="MF" />
+        <result column="SJ" jdbcType="VARCHAR" property="SJ" />
+        <result column="FM" jdbcType="VARCHAR" property="FM" />
+        <result column="CP" jdbcType="VARCHAR" property="CP" />
+        <result column="KFHSCDD" jdbcType="VARCHAR" property="KFHSCDD" />
+        <result column="FHSCDD" jdbcType="VARCHAR" property="FHSCDD" />
+        <result column="PXDD" jdbcType="VARCHAR" property="PXDD" />
+        <result column="PXSJ" jdbcType="VARCHAR" property="PXSJ" />
+        <result column="YSBZ" jdbcType="VARCHAR" property="YSBZ" />
+        <result column="SCZQ" jdbcType="VARCHAR" property="SCZQ" />
+        <result column="CLCSNL" jdbcType="VARCHAR" property="CLCSNL" />
+        <result column="BZQSJ1" jdbcType="VARCHAR" property="BZQSJ1" />
+        <result column="BZQSJ2" jdbcType="VARCHAR" property="BZQSJ2" />
+        <result column="MFJSZL" jdbcType="VARCHAR" property="MFJSZL" />
+        <result column="LXFSGSMC" jdbcType="VARCHAR" property="LXFSGSMC" />
+        <result column="LXFSGSDD" jdbcType="VARCHAR" property="LXFSGSDD" />
+        <result column="LXFSDH" jdbcType="VARCHAR" property="LXFSDH" />
+        <result column="LXFSYX" jdbcType="VARCHAR" property="LXFSYX" />
+        <result column="ZJGS" jdbcType="VARCHAR" property="ZJGS" />
+        <result column="ZJRQ" jdbcType="VARCHAR" property="ZJRQ" />
+        <result column="MFGS" jdbcType="VARCHAR" property="MFGS" />
+        <result column="MFRQ" jdbcType="VARCHAR" property="MFRQ" />
+    </resultMap>
+
+    <select id="getDEMO" resultMap="DEMOResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMOEntity" parameterType="java.lang.String">
+        select
+        id,
+        workflowInstanceId,
+        sequenceNo,
+        sequenceStatus,
+        BT,
+RQ,
+VERSION,
+XGSM,
+BZ,
+PZ,
+MF,
+SJ,
+FM,
+CP,
+KFHSCDD,
+FHSCDD,
+PXDD,
+PXSJ,
+YSBZ,
+SCZQ,
+CLCSNL,
+BZQSJ1,
+BZQSJ2,
+MFJSZL,
+LXFSGSMC,
+LXFSGSDD,
+LXFSDH,
+LXFSYX,
+ZJGS,
+ZJRQ,
+MFGS,
+MFRQ
+        from iffk0_DEMO1 where workflowInstanceId = #{workflowInstanceId}
+    </select>
+
+</mapper>

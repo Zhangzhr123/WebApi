@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.POIMapper">
+
+    <resultMap id="LCBResultMap" type="com.authine.cloudpivot.mybatis.entity.LCBEntity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="parentId" jdbcType="VARCHAR" property="parentId" />
+        <result column="lcbmc" jdbcType="VARCHAR" property="lcbmc" />
+        <result column="fktj" jdbcType="VARCHAR" property="fktj" />
+        <result column="fkbl" jdbcType="VARCHAR" property="fkbl" />
+        <result column="je" jdbcType="VARCHAR" property="je" />
+        <result column="sortKey" jdbcType="INTEGER" property="sortKey" />
+    </resultMap>
+
+    <select id="getLCB" resultMap="LCBResultMap" resultType="com.authine.cloudpivot.mybatis.entity.LCBEntity" parameterType="java.lang.String">
+        select
+        *
+        from irvtt_lcb where parentId = #{parentId}
+    </select>
+
+</mapper>

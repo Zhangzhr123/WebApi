@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.TimeTaskMapper">
+    <select id="getMeetingInfo" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        SELECT * FROM i7jgu_HYSYDLC WHERE sfqx = 0 and sequenceStatus ='COMPLETED' and sfqd =0
+    </select>
+    <select id="getUserId" resultType="com.authine.cloudpivot.mybatis.entity.PageData">
+        select userId from h_org_user where id= #{RYId}
+    </select>
+    <update id="updateSFQXHY">
+        update i7jgu_HYSYDLC set sfqx=1 where sequenceNo=#{sequenceNo}
+    </update>
+</mapper>

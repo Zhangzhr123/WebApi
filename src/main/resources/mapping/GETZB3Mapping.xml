@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authine.cloudpivot.mybatis.mapper.DEMOMapper">
+
+    <resultMap id="DEMO3ResultMap" type="com.authine.cloudpivot.mybatis.entity.DEMO3Entity">
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <!--column 数据库字段 property 映射表字段-->
+        <result column="parentId" jdbcType="VARCHAR" property="parentId" />
+        <result column="MC" jdbcType="VARCHAR" property="MC" />
+        <result column="JSCS" jdbcType="VARCHAR" property="JSCS" />
+        <result column="BZ" jdbcType="VARCHAR" property="BZ" />
+        <result column="sortKey" jdbcType="INTEGER" property="sortKey" />
+    </resultMap>
+
+    <select id="getDEMO3_1" resultMap="DEMO3ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO3Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_DSCGLJ where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO3_2" resultMap="DEMO3ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO3Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_GDTGLJ where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO3_3" resultMap="DEMO3ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO3Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_TMCGLJ where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO3_4" resultMap="DEMO3ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO3Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_ZGLJ where parentId = #{parentId}
+    </select>
+
+    <select id="getDEMO3_5" resultMap="DEMO3ResultMap" resultType="com.authine.cloudpivot.mybatis.entity.DEMO3Entity" parameterType="java.lang.String">
+        select
+        *
+        from iffk0_ZJ where parentId = #{parentId}
+    </select>
+
+</mapper>
